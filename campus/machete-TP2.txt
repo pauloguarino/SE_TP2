@@ -1,0 +1,33 @@
+TP2
+
+# => En todo el workspace (firmware_v2) debe haber "un solo" archivo ".sct" (modelo statechart)
+
+
+En el proyecto encontrará varios archivos ".-sct" (son statecharts) uno solo de ellos puede ser ".sct" 
+para que Yakindu no se confunda y genere código del ".sct" deseado (prefix.sct), los archivos ".-sct" 
+que encontrará son:
+
+    * SCT_1 =>  Blinky.-sct       //  BlinkyTimeEvent.-sct
+    * SCT_2 =>  Button.-sct       //  IdelBlinky.-sct
+    * SCT_3 =>  Application.-sct  //  Portón.-sct
+
+
+Para probar el ".-sct" que desee Ud. debe:
+    * Borrar prefix.sct
+    * Copiar el .-sct que desees y Pegarlo pero renombrándolo prefix.sct
+    * Generate Code Artifacts
+    * Run As -> 1 Statechart Simulation
+
+
+# => Si la generación falla y acusa Problems en el archivo ".sgen", borre "warnings & errors" de la
+     solapa "Problems" e intente nuevamente
+
+
+Definir la opción de compilación correspondiente al ".-sct" que desees probar => #define TEST (SCT_?)
+
+Si "NO" vas a usar Time Events => #define __USE_TIME_EVENTS (false) /* "false" without TimeEvents */
+Si      vas a usar Time Events => #define __USE_TIME_EVENTS (true)  /* or "true" with TimerEvents */
+
+
+# => Si vas a usar Time Events "eliminá" todas las "demoras por software"
+
