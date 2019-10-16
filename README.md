@@ -24,3 +24,18 @@ el vector stateConfVector, un atributo de la estructura prefix, de la variable s
 elemento, se llama a la función main_region_APAGADO_react(handle, bool_true) o main_region_ENCENDIDO_react(handle, bool_true).
 Yendo más profundo se llega a la función prefixIface_opLED que es la que, dependiendo de los argumentos, prende o apaga el LED. Esta
 función está definida en el main y llama a gpioWrite para cambiar el estado del registro del LED seleccionado para toggearlo.
+
+
+
+## Migración
+
+Se migró el proyecto a la carpeta projects/TP2. Se copiaron los archivos que terminan con .-sct, junto con prefix.sct y prefix.sgen.
+Se eliminó el archivo prefix.sct de la carpeta original para que el Yakindu reconozca correctamente qué archivo ejecutar. Se modificó
+el archivo project.mk, comentando el proyecto anterior y agregando
+```
+PROJECT = projects/TP2
+```
+Se eliminó la configuración del debugger, y luego de hacer clean y build, se volvió a abrir la ventana de debug configuration para
+crear el archivo TP2.axf, configurando correctamente el debugger para el proyecto actual. El build tuvo errores ya que faltaban las
+definiciones que estarían en los archivos generados por el diagrama de estados. Se generaron estos seleccionando la opción Generate
+Code Artifacts de prefix.sgen, y luego de hacer nuevamente clean y build, el proyecto estaba listo para ser debuggeado y modificado.
