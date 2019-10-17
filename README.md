@@ -5,6 +5,7 @@
 
 El statechart generado por el archivo Blinky.sct se muestra en la figura (). Se observa el lugar donde empieza el diagrama de estados y dos Estados, "APAGADO" y "ENCENDIDO", unidos con flechas simulando un bucle. 
 
+![GitHub Logo](blinky.png)
 
 Dentro de cada estado se encuentran las operaciones o funciones que se llaman. En este caso se usa opLED(LEDNumber,State) que es una función que dado un número de LED setea el estado que le pasan en el segundo argumento (LED_ON es encendido y LED_OFF es apagado).
 Luego, el sentido de las fechas indican como continua el flujo del programa una vez completada las operaciones dentro del Estado. La palabra "evTick" representa un evento que se activa por interrupción.
