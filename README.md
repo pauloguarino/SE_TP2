@@ -1,6 +1,16 @@
 # TP2 de Sistemas Embebidos
 
 ## statecharts_bare_metal
+### Statechart
+
+El statechart generado por el archivo Blinky.sct se muestra en la figura (). Se observa el lugar donde empieza el diagrama de estados y dos Estados, "APAGADO" y "ENCENDIDO", unidos con flechas simulando un bucle. 
+
+
+Dentro de cada estado se encuentran las operaciones o funciones que se llaman. En este caso se usa opLED(LEDNumber,State) que es una función que dado un número de LED setea el estado que le pasan en el segundo argumento (LED_ON es encendido y LED_OFF es apagado).
+Luego, el sentido de las fechas indican como continua el flujo del programa una vez completada las operaciones dentro del Estado. La palabra "evTick" representa un evento que se activa por interrupción.
+En el programa se definen los valores booleanos LED_ON y LED_OFF que indican los estados posibles del LED y las posiciones de cada LED.
+
+### Código generado en base al statechart
 
 El programa comienza de forma similar a los analizados en el TP1. Se hace la inicialización general con boardConfig(), se configura
 el tickrate a 1 por milisegundo, y con tickCallbackSet se setea la función de interrupción por tick, myTickHook, que lo único que
