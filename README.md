@@ -83,4 +83,4 @@ Se debe tener en cuenta el orden de prioridad de las regiones en el statechart.
 // Alguna razón por la que BUTTON_Status no es un boolean sino un uint32?
 // Error log
 // siempre se inicializan igual las variables?
-// Escalera, cómo hago para que se ejecute el primer entry (sin hacer un estado de todo el programa)
+// Cómo contar para la puerta
