@@ -78,9 +78,3 @@ Se comprobó que si se modifica el statechart se debe generar el código de nuev
 ejemplo, cambiando el valor de una variable), además de hacer clean y build.
 
 Se debe tener en cuenta el orden de prioridad de las regiones en el statechart.
-
-
-// Alguna razón por la que BUTTON_Status no es un boolean sino un uint32?
-// Error log
-// siempre se inicializan igual las variables?
-// Cómo contar para la puerta
