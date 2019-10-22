@@ -39,3 +39,36 @@ Se eliminó la configuración del debugger, y luego de hacer clean y build, se v
 crear el archivo TP2.axf, configurando correctamente el debugger para el proyecto actual. El build tuvo errores ya que faltaban las
 definiciones que estarían en los archivos generados por el diagrama de estados. Se generaron estos seleccionando la opción Generate
 Code Artifacts de prefix.sgen, y luego de hacer nuevamente clean y build, el proyecto estaba listo para ser debuggeado y modificado.
+
+## Implementaciones
+
+Para implementar los distintos programas pedidos se analizó con más detalle cómo funciona el main, y cómo se relacionaba con las
+funciones generadas por Yakindu. Las funciones cuyo nombre empieza con prefixIface (de interface) manejan la interfaz del statechart, 
+tanto para las variables como para los eventos. Por otro lado, cuando se usan time event, en lugar de manualmente activar el evento, 
+primero se inicializa un contador con la línea
+```
+InitTimerTicks(ticks, NOF_TIMERS);
+```
+y luego se ejecuta el siguiente código:
+```
+			UpdateTimers(ticks, NOF_TIMERS);
+			for (i = 0; i < NOF_TIMERS; i++) {
+				if (IsPendEvent(ticks, NOF_TIMERS, ticks[i].evid) == true) {
+
+					prefix_raiseTimeEvent(&statechart, ticks[i].evid);	// Event -> Ticks.evid => OK
+					MarkAsAttEvent(ticks, NOF_TIMERS, ticks[i].evid);
+				}
+			}
+```
+donde ticks es una variable de tipo TimerTicks, una estructura definida en "TimerTicks.h". Para que los tiempos reales coincidan con los definidos en prefix.sct, 
+el tickrate debe ser de 1 ms.
+
+Se comprobó que si se modifica el statechart se debe generar el código de nuevo, por más que no se agreguen ni quiten eventos (por
+ejemplo, cambiando el valor de una variable), además de hacer clean y build.
+
+Se debe tener en cuenta el orden de prioridad de las regiones en el statechart.
+
+
+// Alguna razón por la que BUTTON_Status no es un boolean sino un uint32?
+// Error log
+// siempre se inicializan igual las variables?

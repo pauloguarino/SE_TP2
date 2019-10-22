@@ -78,10 +78,11 @@
  	 	 	 	 	 	cp Porton.-sct prefix.sct 							 		*/
 
 /* Select a compilation choise	*/
-#define TEST (SCT_1)
+#define TEST (SCT_3)
 
 
 #define TICKRATE_1MS	(1)				/* 1000 ticks per second */
+#define TICKRATE_50MS	(50)			/* 20 ticks per second */
 #define TICKRATE_MS		(TICKRATE_1MS)	/* 1000 ticks per second */
 
 /*==================[internal data declaration]==============================*/
@@ -93,8 +94,8 @@ static Prefix statechart;
 
 
 /* Select a TimeEvents choise	*/
-#define __USE_TIME_EVENTS (false)	/* "false" without TimeEvents */
-//#define __USE_TIME_EVENTS (true)	/* or "true" with TimerEvents */
+//#define __USE_TIME_EVENTS (false)	/* "false" without TimeEvents */
+#define __USE_TIME_EVENTS (true)	/* or "true" with TimerEvents */
 
 /*! This is a timed state machine that requires timer services */
 #if (__USE_TIME_EVENTS == true)
@@ -258,7 +259,7 @@ int main(void)
 uint32_t Buttons_GetStatus_(void) {
 	uint8_t ret = false;
 
-	if (gpioRead( TEC1 ) == 0)
+	if (gpioRead( TEC3 ) == 0)
 		ret = true;
 
 	return ret;
