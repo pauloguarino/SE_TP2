@@ -78,3 +78,7 @@ Se comprobó que si se modifica el statechart se debe generar el código de nuev
 ejemplo, cambiando el valor de una variable), además de hacer clean y build.
 
 Se debe tener en cuenta el orden de prioridad de las regiones en el statechart.
+
+# Hoja de ruta
+
+![GitHub Logo](img1.jpg)
